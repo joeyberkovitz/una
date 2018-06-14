@@ -37,4 +37,15 @@ function bx_base_general_insert_to_post (iFileId, sFileUrl, sEditorId) {
     bx_editor_insert_img (sEditorId, 'bx-base-general-img-' + iFileId, sFileUrl, 'bx-base-general-img');
 }
 
+
+$(document).ready(function(){
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var profileId = url.searchParams.get("profile_id");
+	if(profileId != null){
+		if($("select[name=allow_view_to] option[value='"+profileId+"']").length === 0)
+			profileId = "-" + profileId;
+		$("select[name=allow_view_to]").val(profileId);
+	}
+});
 /** @} */
